@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">UnitConverter</string>
+    <string name="quantity">Introduce una cantidad</string>
+    <string name="qty_nan">El valor introducido no es válido</string>
+    <string name="input_value">Valor a convertir</string>
+    <string name="saved_value">Conversión almacenada en memoria</string>
+    <string name="radio_must_select">Debes seleccionar un tipo de conversión</string>
+    <string name="no_conversion_to_save">Primero debes realizar una conversión</string>
+    <string name="m_km">Metros a Kilómetros</string>
+    <string name="g_kg">Gramos a Kilogramos</string>
+    <string name="cels_fahr">Celsius a Fahrenheit</string>
+    <string name="result">Resultado</string>
+    <string name="convert_type">Tipo de conversión</string>
+    <string name="converts_saved">Conversiones guardadas</string>
+    <string name="convert">Calcular</string>
+    <string name="clear">Borrar</string>
+    <string name="save">Guardar</string>
+    <string name="show">Mostrar guardadas</string>
+    <string name="hide">Ocultar guardadas</string>
+</resources>
