@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Button clearBtn;
     private Button submitBtn;
     private Button saveBtn;
-    private Button showBtn;
+    private Button toggleSavedBtn;
 
     private String outputUnitSymbol;
     private String inputUnitSymbol;
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(btnView -> saveBtnHandler());
 
         // Especificar handler para pulsación del botón mostrar resultados guardados
-        showBtn = findViewById(R.id.showBtn);
-        showBtn.setOnClickListener(btnView -> showBtnHandler());
+        toggleSavedBtn = findViewById(R.id.toggleSavedBtn);
+        toggleSavedBtn.setOnClickListener(btnView -> showBtnHandler());
 
         // Ocultar layout de resultado por defecto
         resultLayout = findViewById(R.id.resultLayout);
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Ocultar botones de borrar y mostrar conversiones guardadas por defecto
         clearBtn.setVisibility(View.GONE);
-        showBtn.setVisibility(View.GONE);
+        toggleSavedBtn.setVisibility(View.GONE);
 
         // Ocultar layout de conversiones guardadas por defecto
         savedLayout = findViewById(R.id.savedLayout);
@@ -139,13 +139,13 @@ public class MainActivity extends AppCompatActivity {
             Gson gson = new Gson();
             Type type = new TypeToken<List<Conversion>>(){}.getType();
             savedConversions = gson.fromJson(sp.getString(SAVED_CONVERSIONS_OBJ_KEY, ""), type);
-            showBtn.setVisibility(View.VISIBLE);
+            toggleSavedBtn.setVisibility(View.VISIBLE);
             savedLayout.setVisibility(View.VISIBLE);
         }
         if (savedConversions == null) {
             savedConversions = new ArrayList<>();
         }
-        // Recycler view encargado de listar el historial de conversiones
+        // RecyclerView encargado de listar el historial de conversiones
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Adapter para RecyclerView, que especifica como se debe adaptar
@@ -185,7 +185,9 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             lastConversionTimestamp = LocalDateTime.now();
-            resultLayout.setVisibility(View.VISIBLE);
+            if (resultLayout.getVisibility() == View.GONE) {
+                resultLayout.setVisibility(View.VISIBLE);
+            }
             resultText.setText(currentOutput);
         }
     }
@@ -212,10 +214,10 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println(currentInput + currentOutput + lastConversionTimestamp);
         // Hacer botón de mostrar/ocultar conversiones guardadas visible
-        if (showBtn.getVisibility() == View.GONE) {
-            showBtn.setVisibility(View.VISIBLE);
-            if (showBtn.getText().equals(getString(R.string.hide))) {
-                showBtn.setText(getResources().getString(R.string.show));
+        if (toggleSavedBtn.getVisibility() == View.GONE) {
+            toggleSavedBtn.setVisibility(View.VISIBLE);
+            if (toggleSavedBtn.getText().equals(getString(R.string.hide))) {
+                toggleSavedBtn.setText(getResources().getString(R.string.show));
             }
         }
         // Crear instancia de Conversion y añadirla al listado
@@ -234,15 +236,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showBtnHandler() {
         if (savedConversions.isEmpty()) {
-            showBtn.setVisibility(View.GONE);
+            toggleSavedBtn.setVisibility(View.GONE);
             savedLayout.setVisibility(View.GONE);
             return;
         }
-        if (showBtn.getText().equals(getString(R.string.show))) {
-            showBtn.setText(getResources().getString(R.string.hide));
+        if (toggleSavedBtn.getText().equals(getString(R.string.show))) {
+            toggleSavedBtn.setText(getResources().getString(R.string.hide));
             savedLayout.setVisibility(View.VISIBLE);
         } else {
-            showBtn.setText(getResources().getString(R.string.show));
+            toggleSavedBtn.setText(getResources().getString(R.string.show));
             savedLayout.setVisibility(View.GONE);
         }
     }

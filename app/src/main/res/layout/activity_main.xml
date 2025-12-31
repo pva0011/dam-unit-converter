@@ -32,6 +32,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
@@ -58,6 +59,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/conversionTypeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="6dp"
@@ -126,7 +128,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id = "@+id/resultLayout"
+        android:id="@+id/resultLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -166,6 +168,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/toggleSavedLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
@@ -173,7 +176,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/showBtn"
+            android:id="@+id/toggleSavedBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
@@ -181,7 +184,7 @@
             android:text="@string/hide" />
     </LinearLayout>
     <LinearLayout
-        android:id = "@+id/savedLayout"
+        android:id="@+id/savedLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

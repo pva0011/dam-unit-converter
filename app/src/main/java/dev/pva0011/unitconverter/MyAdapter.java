@@ -48,8 +48,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            conversionInput = itemView.findViewById(R.id.conversion_input);
-            conversionOutput = itemView.findViewById(R.id.conversion_output);
+            conversionInput = itemView.findViewById(R.id.conversioInput);
+            conversionOutput = itemView.findViewById(R.id.conversionOutput);
             timestamp = itemView.findViewById(R.id.timestamp);
             deleteButton = itemView.findViewById(R.id.deleteButton);
         }
